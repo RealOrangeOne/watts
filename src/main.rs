@@ -10,8 +10,14 @@ fn read_file(filename: &str) -> u32 {
     let filepath = PathBuf::from(BASE_DIR).join(filename);
     let mut file = File::open(filepath).expect(&format!("Could not find file {}", filename));
     let mut contents = String::new();
-    file.read_to_string(&mut contents).expect(&format!("Failed to read {}", filename));
-    return contents.replace("\n", "").parse::<u32>().expect(&format!("Failed to parse {}", filename));
+    file.read_to_string(&mut contents).expect(&format!(
+        "Failed to read {}",
+        filename
+    ));
+    return contents.replace("\n", "").parse::<u32>().expect(&format!(
+        "Failed to parse {}",
+        filename
+    ));
 }
 
 
