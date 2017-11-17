@@ -1,6 +1,6 @@
 # Watts
 
-[![CircleCI](https://img.shields.io/circleci/project/github/realorangeone/watts.svg?style=flat-square)](https://circleci.com/gh/realorangeone/watts)
+[![CircleCI](https://circleci.com/gh/RealOrangeOne/watts.svg?style=svg)](https://circleci.com/gh/RealOrangeOne/watts)
 
 _Very_ simple program to read the current wattage of your computer. Designed to be as fast and lightweight as possible!
 
