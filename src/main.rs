@@ -6,7 +6,7 @@ const BASE_DIR: &str = "/sys/class/power_supply/BAT0/";
 const DIVISOR: f64 = 1000000000000.0;
 
 
-fn read_file(filename: &str) -> u32 {
+fn read_file(filename: &str) -> f64 {
     let filepath = PathBuf::from(BASE_DIR).join(filename);
     let mut file = File::open(filepath).expect(&format!("Could not find file {}", filename));
     let mut contents = String::new();
@@ -14,7 +14,7 @@ fn read_file(filename: &str) -> u32 {
         "Failed to read {}",
         filename
     ));
-    return contents.replace("\n", "").parse::<u32>().expect(&format!(
+    return contents.replace("\n", "").parse::<f64>().expect(&format!(
         "Failed to parse {}",
         filename
     ));
@@ -24,6 +24,6 @@ fn read_file(filename: &str) -> u32 {
 fn main() {
     let voltage = read_file("voltage_now");
     let current = read_file("current_now");
-    let watts = (voltage as f64 * current as f64) / DIVISOR;
+    let watts = (voltage * current) / DIVISOR;
     println!("{:.2}W", watts);
 }
